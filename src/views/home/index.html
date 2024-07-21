@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="http://localhost:3000/home/styles.css" type="text/css">
+    <script src="http://localhost:3000/home/script.js" defer></script>
+</head>
+<body>
+
+<header>
+    <div class="section_heading" onmouseenter="delAllSections()">
+        <p>Shop name</p>
+    </div>
+    <div class="section_heading" id="brandName_title" onmouseenter="addSection(event)">
+        <p>Brand names</p>
+    </div>
+    <div class="section_heading" id="news_title" onmouseenter="addSection(event)">
+        <p>News</p>
+    </div>
+    <div class="section_heading" id="bags_title" onmouseenter="addSection(event)">
+        <p>Bags</p>
+    </div>
+    <div class="section_heading" id="women_title" onmouseenter="addSection(event)">
+        <p>Women</p>
+    </div>
+    <div class="section_heading" id="men_title" onmouseenter="addSection(event)">
+        <p>Men</p>
+    </div>
+    <div class="section_heading" id="sales_title" onmouseenter="addSection(event)">
+        <p>Sales</p>
+    </div>
+    <div class="section_heading" onmouseenter="delAllSections()">
+        <p>icons</p>
+    </div>
+
+    <div class="section" id="brandName" onmouseleave="delSection(event)">
+        <p>55555</p>
+        <p>55555</p>
+        <p>55555</p>
+        <p>55555</p>
+        <p>55555</p>
+    </div>
+
+    <div class="section" id="news" onmouseleave="delSection(event)">
+        <p>44444</p>
+        <p>44444</p>
+        <p>44444</p>
+        <p>44444</p>
+        <p>44444</p>
+    </div>
+
+    <div class="section" id="bags" onmouseleave="delSection(event)">
+        <p>00000</p>
+        <p>00000</p>
+        <p>00000</p>
+        <p>00000</p>
+        <p>00000</p>
+    </div>
+
+    <div class="section" id="men" onmouseleave="delSection(event)">
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+    </div>
+
+    <div class="section" id="women" onmouseleave="delSection(event)">
+        <p>22222</p>
+        <p>22222</p>
+        <p>22222</p>
+        <p>22222</p>
+        <p>22222</p>
+    </div>
+
+    <div class="section" id="sales" onmouseleave="delSection(event)">
+        <p>33333</p>
+        <p>33333</p>
+        <p>33333</p>
+        <p>33333</p>
+        <p>33333</p>
+    </div>
+
+</header>
+
+<main>
+    <img src="http://localhost:3000/home/images/w1500_q80.webp" width="100%" height="600px" style="margin-top: 70px;">
+    <div style="text-align: center; width: 100%; font-size: 22px;">
+        <p> <b>Exclusive access: Alaïa’s sculptural silhouettes </b></p>
+        <p>Presenting the highly anticipated new collection, featuring four key looks available only at NET‑A‑PORTER for a limited time</p>
+    </div>
+
+    </br></br></br>
+
+    <div id="new_section_container">
+        <div id="new_info_container">
+            <p>1,000 NEW ITEMS</p>
+            <p><b>New in</b></p>
+            <p>Stay ahead of the style curve with our latest arrivals</p>
+            <button> Shop New In</button>
+        </div>
+        <button id="button_new_left" onclick="transitionNewLeft()"> &lt;</button>
+        <div class="new_product_container" id="new_group1">
+            <div class="new_product_group_1" >
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">Judith</p>
+            </div>
+            <div class="new_product_group_1">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">Tory </p>
+            </div>
+            <div class="new_product_group_1">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">Alai</p>
+            </div>
+            <div class="new_product_group_1">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">Alai</p>
+            </div>
+        </div>
+
+        <div class="new_product_container" id="new_group2">
+            <div class="new_product_group_2">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">2222</p>
+            </div>
+            <div class="new_product_group_2">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">2222 </p>
+            </div>
+            <div class="new_product_group_2">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">2222</p>
+            </div>
+            <div class="new_product_group_2">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">2222</p>
+            </div>
+        </div>
+
+        <div class="new_product_container" id="new_group3">
+<!--            <button> &lt;</button>-->
+            <div class="new_product_group_3">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">3333</p>
+            </div>
+            <div class="new_product_group_3">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">3333 </p>
+            </div>
+            <div class="new_product_group_3">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">3333</p>
+            </div>
+            <div class="new_product_group_3">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">3333</p>
+            </div>
+        </div>
+        <button id="button_new_right" onclick="transitionNewRight()"> &gt; </button>
+    </div>
+
+
+    <div id="news_sections_container">
+        <div >
+            <img src="http://localhost:3000/home/images/i.webp">
+            <p>Title</p>
+            <p>Main text</p>
+        </div>
+        <div>
+            <img src="http://localhost:3000/home/images/i.webp">
+            <p>Title</p>
+            <p>Main text</p>
+        </div>
+        <div>
+            <img src="http://localhost:3000/home/images/i.webp">
+            <p>Title</p>
+            <p>Main text</p>
+        </div>
+    </div>
+
+    <div id="new_section_container">
+        <div id="new_info_container">
+            <p><b>Let's get away...</b></p>
+            <p>discover the ultimate packing checklist for every destination</p>
+            <button> Shop the travel edit</button>
+        </div>
+        <button id="button_sales_left" onclick="transitionSalesLeft()"> &lt;</button>
+        <div class="sales_product_container" id="sales_group1">
+            <div class="sales_product_group_1" >
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">Judith</p>
+            </div>
+            <div class="sales_product_group_1">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">Tory </p>
+            </div>
+            <div class="sales_product_group_1">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">Alai</p>
+            </div>
+            <div class="sales_product_group_1">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">Alai</p>
+            </div>
+        </div>
+
+        <div class="sales_product_container" id="sales_group2">
+            <div class="sales_product_group_2">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">2222</p>
+            </div>
+            <div class="sales_product_group_2">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">2222 </p>
+            </div>
+            <div class="sales_product_group_2">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">2222</p>
+            </div>
+            <div class="sales_product_group_2">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">2222</p>
+            </div>
+        </div>
+
+        <div class="sales_product_container" id="sales_group3">
+<!--            <button> &lt;</button>-->
+            <div class="sales_product_group_3">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">3333</p>
+            </div>
+            <div class="sales_product_group_3">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">3333 </p>
+            </div>
+            <div class="sales_product_group_3">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">3333</p>
+            </div>
+            <div class="sales_product_group_3">
+                <img src="http://localhost:3000/home/images/i.webp" id="product_image">
+                <p style="text-align: center">3333</p>
+            </div>
+        </div>
+        <button id="button_sales_right" onclick="transitionSalesRight()"> &gt; </button>
+    </div>
+
+</main>
+
+<footer>
+
+</footer>
+
+</body>
+</html>
