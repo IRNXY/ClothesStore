@@ -20,17 +20,18 @@ header {
     grid-column: 1/-1;
     text-align: start;}
 
-#new_section_container {
+.section_container {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
 }
 
-#new_info_container {
+.info_container {
     margin-left: 7%;
     font-size: 18px;
 }
+
 
 .new_product_container {
     display: flex;
