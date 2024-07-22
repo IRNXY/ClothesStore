@@ -3,10 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <title>Bags</title>
+    <link rel="stylesheet" href="http://localhost:3000/bags/styles.css" type="text/css">
+    <script src="http://localhost:3000/bags/script.js" defer></script>
 </head>
 <body>
 
+<header>
+    <div class="section_heading" onmouseenter="delAllSections()">
+        <a href="/">Shop name</a>
+    </div>
+    <div class="section_heading" id="brandName_title" onmouseenter="addSection(event)">
+        <p>Brand names</p>
+    </div>
+    <div class="section_heading" id="news_title" onmouseenter="addSection(event)">
+        <p>News</p>
+    </div>
+    <div class="section_heading" id="bags_title" onmouseenter="addSection(event)">
+        <a href="/bags">Bags</a>
+    </div>
+    <div class="section_heading" id="women_title" onmouseenter="addSection(event)">
+        <p>Women</p>
+    </div>
+    <div class="section_heading" id="men_title" onmouseenter="addSection(event)">
+        <p>Men</p>
+    </div>
+    <div class="section_heading" id="sales_title" onmouseenter="addSection(event)">
+        <p>Sales</p>
+    </div>
+    <div class="section_heading" onmouseenter="delAllSections()">
+        <p>icons</p>
+    </div>
 
+    <div class="section" id="brandName" onmouseleave="delSection(event)">
+        <p>55555</p>
+        <p>55555</p>
+        <p>55555</p>
+        <p>55555</p>
+        <p>55555</p>
+    </div>
+
+    <div class="section" id="news" onmouseleave="delSection(event)">
+        <p>44444</p>
+        <p>44444</p>
+        <p>44444</p>
+        <p>44444</p>
+        <p>44444</p>
+    </div>
+
+    <div class="section" id="bags" onmouseleave="delSection(event)" >
+        <p>00000</p>
+        <p>00000</p>
+        <p>00000</p>
+        <p>00000</p>
+        <p>00000</p>
+    </div>
+
+    <div class="section" id="men" onmouseleave="delSection(event)">
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+    </div>
+
+    <div class="section" id="women" onmouseleave="delSection(event)">
+        <p>22222</p>
+        <p>22222</p>
+        <p>22222</p>
+        <p>22222</p>
+        <p>22222</p>
+    </div>
+
+    <div class="section" id="sales" onmouseleave="delSection(event)">
+        <p>33333</p>
+        <p>33333</p>
+        <p>33333</p>
+        <p>33333</p>
+        <p>33333</p>
+    </div>
+
+</header>
+
+<main>
+    <br><br><br>
+    <div id="title_bags">
+        <h2 id="text_title">Bags</h2>
+        <p>Discover the latest and greatest arrivals, new designers to know, exclusive capsules and more style inspiration.</p>
+    </div>
+    <div class="section_container">
+        <div id="dropdown_menus">
+            <div class="menu" >
+                <h3>Color</h3>
+                <button onclick="displayParameters('color')"> ^ </button>
+                <div id="color_parameters">
+                    <input type="checkbox" id="color1" name="color" on value="RED" onchange="getParameter(this)">
+                    <label for="color1">RED</label><br>
+                    <input type="checkbox" id="color2" name="color" value="YELLOW" onchange="getParameter(this)">
+                    <label for="color2"> YELLOW</label><br>
+                    <input type="checkbox" id="color3" name="color" value="BLUE" onchange="getParameter(this)">
+                    <label for="color3"> BLUE</label><br>
+                </div>
+            </div>
+
+            <div class="menu" >
+                <h3>SIZE</h3>
+                <button onclick="displayParameters('size')"> ^ </button>
+                <div id="size_parameters">
+                    <input type="checkbox" id="size1" name="size" value="X" onchange="getParameter(this)">
+                    <label for="size1">X</label><br>
+                    <input type="checkbox" id="size2" name="size" value="XXL" onchange="getParameter(this)">
+                    <label for="size2"> XXL </label><br>
+                    <input type="checkbox" id="size3" name="size" value="M" onchange="getParameter(this)">
+                    <label for="size3"> M </label><br>
+                </div>
+            </div>
+
+            <div class="menu" >
+                <h3>PRICE</h3>
+                <button onclick="displayParameters('price')"> ^ </button>
+                <div id="price_parameters">
+                    <input type="checkbox" id="price1" name="price" value="1000 AED" onchange="getParameter(this)">
+                    <label for="price1"> 1000 AED </label><br>
+                    <input type="checkbox" id="price2" name="price" value="2000 AED" onchange="getParameter(this)">
+                    <label for="price2"> 2000 AED </label><br>
+                    <input type="checkbox" id="price3" name="price" value="3000 AED" onchange="getParameter(this)">
+                    <label for="price3"> 3000 AED </label><br>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+</main>
+
+<footer>
+
+</footer>
 
 </body>
 </html>

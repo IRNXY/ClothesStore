@@ -3,7 +3,7 @@ require('dotenv').config({path: '../.env'});
 //
 // const {handleUserRequests} = require('./controllers/userController');
 // const {handleAuthRequests} = require('./controllers/authController');
-// const {handleRecipeRequest} = require('./controllers/recipeController');
+const {handleBagsRequest} = require('./controllers/bagsController');
 // const {handleCategoriesRequest} = require('./controllers/categoryController');
 const http = require('http')
 const fs = require('fs');
@@ -27,7 +27,7 @@ const server = http.createServer(async (req, res) => {
         const endpoint = parts[3] // Remove '/api/v1/' from the URL
         switch (endpoint) {
             case 'bags':
-                await handleRecipeRequest(req, res, parts[4]);
+                await handleBagsRequest(req, res);
                 break;
 
             default:
