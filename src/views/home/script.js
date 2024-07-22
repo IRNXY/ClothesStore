@@ -100,4 +100,3 @@ function delSection(event) {
     const blockId = event.target.id
     document.getElementById(blockId).style.display = "none";
 }
-

@@ -26,18 +26,10 @@ const server = http.createServer(async (req, res) => {
         // Handle API requests
         const endpoint = parts[3] // Remove '/api/v1/' from the URL
         switch (endpoint) {
-            case 'recipes':
+            case 'bags':
                 await handleRecipeRequest(req, res, parts[4]);
                 break;
-            case 'auth':
-                await handleAuthRequests(req, res, parts[4]);
-                break;
-            case 'categories':
-               await handleCategoriesRequest(req, res);
-                break;
-            case 'users':
-                await handleUserRequests(req, res, parts[4]);
-                break;
+
             default:
                 res.writeHead(404, {'Content-Type': 'application/json'});
                 res.end(JSON.stringify({error: 'Not Found'}));
