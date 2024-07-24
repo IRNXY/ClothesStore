@@ -100,3 +100,14 @@ function delSection(event) {
     const blockId = event.target.id
     document.getElementById(blockId).style.display = "none";
 }
+
+console.log(document.getElementById("bags_title").getBoundingClientRect());
+
+// var offsetHeight = document.getElementById('bags_title').offsetHeight;
+//     console.log(offsetHeight);
+//     document.getElementsByTagName('main')[0].style.paddingTop = offsetHeight + 'px';
+// window.addEventListener('resize', () => {
+//     var offsetHeight = document.getElementById('bags_title').offsetHeight;
+//     console.log(offsetHeight);
+//     document.getElementsByTagName('main')[0].style.paddingTop = offsetHeight + 'px';
+// });
