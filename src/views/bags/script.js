@@ -1,8 +1,10 @@
 var param_obj = {value: [], name: []}
 
+
+
 fetch(`http://localhost:3000/api/v1/bags`, {
-    method: 'GET',
-    body: {}
+    method: 'PUT',
+    body: JSON.stringify(param_obj),
     })
 .then(response => response.json())
 .then(data => {
@@ -40,12 +42,9 @@ function displayParameters(arg) {
     document.getElementById(arg + '_parameters').style.display = document.getElementById(arg + '_parameters').style.display === 'none' ? 'block' : 'none';
 }
 
-function getParameter(arg) {
-    if (arg.checked){
-        param_obj.value.push(arg.value);
-        param_obj.name.push(arg.name);
-        fetch(`http://localhost:3000/api/v1/bags`, {
-            method: 'GET',
+function fetchData(){
+    fetch(`http://localhost:3000/api/v1/bags`, {
+            method: 'PUT',
             body: JSON.stringify(param_obj)},
             )
         .then(response => response.json())
@@ -53,12 +52,15 @@ function getParameter(arg) {
             displayBagsData(data);
         })
         .catch(error => console.error('Error fetching user data:', error));
+}
+function getParameter(arg) {
+    if (arg.checked){
+        param_obj.value.push(arg.value);
+        param_obj.name.push(arg.name);
     }else{
-        const filtred_value = param_obj.value.filter((str) => str !== arg.value);
-        param_obj.value = filtred_value;
-
-        const filtred_name = param_obj.name.filter((str) => str !== arg.name);
-        param_obj.name = filtred_name;
-
+        var index_delete = param_obj.value.indexOf(arg.value);
+        param_obj.value.splice(index_delete, 1);
+        param_obj.name.splice(index_delete, 1);
     }
+    fetchData(param_obj)
 }

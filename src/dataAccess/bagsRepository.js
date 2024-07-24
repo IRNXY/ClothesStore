@@ -1,8 +1,8 @@
 const pool = require('../config/dbConnection');
 
 
-async function getAllCondBags() {
-    let query = 'SELECT id, title, description as description FROM recipes WHERE is_deleted = 0 ';
+async function getAllCondBags(str) {
+    let query = 'SELECT * FROM bags b, color c, size s WHERE ' + str.join(" AND ");
     return new Promise((resolve, reject) => {
         pool.query(query, (err, results) => {
             if (err) {
@@ -30,4 +30,5 @@ async function getAllBags() {
 
 module.exports = {
     getAllCondBags,
+    getAllBags,
 };

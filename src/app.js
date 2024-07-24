@@ -1,10 +1,6 @@
 require('dotenv').config({path: '../.env'});
-// require('./config/dbConnection')
-//
-// const {handleUserRequests} = require('./controllers/userController');
-// const {handleAuthRequests} = require('./controllers/authController');
+require('./config/dbConnection')
 const {handleBagsRequest} = require('./controllers/bagsController');
-// const {handleCategoriesRequest} = require('./controllers/categoryController');
 const http = require('http')
 const fs = require('fs');
 const path = require('path');
