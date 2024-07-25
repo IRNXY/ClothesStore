@@ -74,11 +74,13 @@ function transitionSalesLeft() {
     }else if (sales_products_group === 2) {
         document.getElementById("button_sales_right").style.visibility = "visible";
     }
+
     var products = document.getElementsByClassName('sales_product_group_' + sales_products_group);
     for (var i = 0; i < products.length; i++) {
         products[i].classList.add('product_left_center_' + i);
         timeOutAnimation(i, products, 'product_left_center_');
     }
+
 }
 
 function delAllSections(){
@@ -91,9 +93,15 @@ function delAllSections(){
 function addSection(event) {
     delAllSections();
 
-    const targetId = event.target.id
-    var blockId = targetId.split('_')[0]
-    document.getElementById(blockId).style.display = "block";
+    const target_id = event.target.id
+    var block_id = target_id.split('_')[0]
+    // var pos_top = document.getElementById(target_id).getBoundingClientRect().top;
+    // var height = document.getElementById(target_id).getBoundingClientRect().height;
+    // var pos_left = document.getElementById(target_id).getBoundingClientRect().left;
+    //
+    // document.getElementById(block_id).style.top = (pos_top + height) + 'px';
+    // document.getElementById(block_id).style.left = pos_left + 'px';
+    document.getElementById(block_id).style.display = "block";
 }
 
 function delSection(event) {
@@ -103,11 +111,11 @@ function delSection(event) {
 
 console.log(document.getElementById("bags_title").getBoundingClientRect());
 
-// var offsetHeight = document.getElementById('bags_title').offsetHeight;
-//     console.log(offsetHeight);
-//     document.getElementsByTagName('main')[0].style.paddingTop = offsetHeight + 'px';
-// window.addEventListener('resize', () => {
-//     var offsetHeight = document.getElementById('bags_title').offsetHeight;
-//     console.log(offsetHeight);
-//     document.getElementsByTagName('main')[0].style.paddingTop = offsetHeight + 'px';
-// });
+var offsetHeight = document.getElementById('bags_title').offsetHeight;
+    console.log(offsetHeight);
+    document.getElementsByTagName('main')[0].style.paddingTop = offsetHeight + 'px';
+window.addEventListener('resize', () => {
+    var offsetHeight = document.getElementById('bags_title').offsetHeight;
+    console.log(offsetHeight);
+    document.getElementsByTagName('main')[0].style.paddingTop = offsetHeight + 'px';
+});
