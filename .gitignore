@@ -1,3 +1,6 @@
 node_modules
 .idea
 .env
+src/views/bags/images
+src/views/home/images
+src/views/product_page/images
