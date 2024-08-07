@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Bags</title>
-    <link rel="stylesheet" href="http://localhost:3000/bags/styles.css" type="text/css">
-    <script src="http://localhost:3000/bags/script.js" defer></script>
+    <link rel="stylesheet" href="http://localhost:3000/product_page/styles.css" type="text/css">
+    <script src="http://localhost:3000/product_page/script.js" defer></script>
 </head>
 <body>
 
@@ -143,56 +143,85 @@
 
 </header>
 
+
 <main>
-    <div id="title_bags">
-        <h1 id="text_title">Bags</h1>
-<!--        <p>Discover the latest and greatest arrivals, new designers to know, exclusive capsules and more style inspiration.</p>-->
-    </div>
-    <div class="section_container">
-        <div id="dropdown_menus">
-            <div class="menu" id="color">
-                <div class="flex_row">
-                    <p>Color</p>
-                    <button class="button_category"  onclick="displayParameters('color')">
-                        <img src="http://localhost:3000/images/arrow.png" height="25xp">
-                    </button>
-                </div>
-                <div id="color_parameters">
-                    <input type="checkbox" id="color1" name="color" on value="RED" onchange="getParameter(this)">
-                    <label for="color1">RED</label><br>
-                    <input type="checkbox" id="color2" name="color" value="YELLOW" onchange="getParameter(this)">
-                    <label for="color2"> YELLOW</label><br>
-                    <input type="checkbox" id="color3" name="color" value="BLUE" onchange="getParameter(this)">
-                    <label for="color3"> BLUE</label><br>
-                </div>
-            </div>
-
-            <div class="menu" id="size">
-                <div class="flex_row">
-                    <p>Size</p>
-                    <button class="button_category" onclick="displayParameters('size')">
-                        <img src="http://localhost:3000/images/arrow.png" height="25xp">
-                    </button>
-                </div>
-                <div id="size_parameters">
-                    <input type="checkbox" id="size1" name="size" value="X" onchange="getParameter(this)">
-                    <label for="size1">X</label><br>
-                    <input type="checkbox" id="size2" name="size" value="XXL" onchange="getParameter(this)">
-                    <label for="size2"> XXL </label><br>
-                    <input type="checkbox" id="size3" name="size" value="M" onchange="getParameter(this)">
-                    <label for="size3"> M </label><br>
-                </div>
-            </div>
-
-
+    <div id="main_block">
+        <div id="picture_block">
+            <img src="http://localhost:3000/images/prod_pic_test.png" height="80%" width="100%">
+<!--            <div id="smaller_pic_block">-->
+<!--                <img src="http://localhost:3000/product_page/images/prod_pic_2.png" height="50px" width="50px">-->
+<!--                <img src="http://localhost:3000/product_page/images/prod_pic_3.png" height="50px" width="50px">-->
+<!--                <img src="http://localhost:3000/product_page/images/prod_pic_4.png" height="50px" width="50px">-->
+<!--            </div>-->
         </div>
-
-        <div class="" id="products_section">
-            <div id="categories">
-
+        <div id="inf_block">
+            <h1>CLIO PEPPIATT</h1>
+            <h3>Petal embellished satin tote</h3>
+            <div class="section_data" id="amount_price">
+                <p class="extra_text">Amount left: </p>
+                <section id="amount_left"> </section>
             </div>
-            <div id="products">
+            <div class="section_data">
+                <h4 >AED</h4>
+                <section id="price">  </section>
+                <p class="extra_text" id="local_taxes">(Local taxes and duties included)</p>
+            </div>
+            <div class="section_data" id="color_section">
+                <p class="extra_text">Color:  </p>
+                <section id="color_picked">  </section>
+            </div>
+            <section id="color_menu">
 
+            </section>
+            <button id="add_to_bag"> Add to Bag</button>
+            <div id="addition_info">
+                <div class="menu" id="editor">
+                    <div class="flex_row">
+                        <p class="add_inf_header">EDITOR'S NOTES</p>
+                        <button class="button_category"  onclick="displayParameters('editor')">
+                            <img src="http://localhost:3000/images/arrow.png" height="25xp">
+                        </button>
+                    </div>
+                    <div id="editor_parameters">
+                        <p>Clio Peppiatt's 'Petal' tote will bring a touch of femininity to every outfit.
+                            Made from satin, it's hand-embellished with beads and faux pearls that beautifully catch the light from every angle.
+                            It can easily fit your night-out essentials, like a phone, keys and lip gloss.</p>
+
+                    </div>
+                </div>
+
+                <div class="menu" id="size">
+                    <div class="flex_row">
+                        <p class="add_inf_header">SIZE</p>
+                        <button class="button_category" onclick="displayParameters('size')">
+                            <img src="http://localhost:3000/images/arrow.png" height="25xp">
+                        </button>
+                    </div>
+                    <div id="size_parameters">
+                        <p>This item’s measurements are:
+                            Product measurements:
+                            Handle Drop: 6cm / 2.4in
+                            Height: 13cm / 5.1in
+                            Width: 23cm / 9.1in
+                            Depth: 7cm / 2.8in </p>
+                    </div>
+                </div>
+                <div class="menu" id="details_care">
+                <div class="flex_row">
+                    <p class="add_inf_header">DETAILS & CARE</p>
+                    <button class="button_category" onclick="displayParameters('details_care')">
+                        <img src="http://localhost:3000/images/arrow.png" height="25xp" class="">
+                    </button>
+                </div>
+                <div id="details_care_parameters" >
+                    <p>Pink satin
+                        Top handle
+                        Internal slip pocket
+                        Fully lined
+                        Snap fastening at open top
+                        Designer color: Cherry Blossom</p>
+                </div>
+            </div>
             </div>
         </div>
     </div>

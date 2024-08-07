@@ -1,7 +1,9 @@
-var param_obj = {value: [], name: []}
+var param_obj = {value: [], name: [], id: []}
 var products_data= []
+var hidden_height = 9;
 
-fetch(`http://localhost:3000/api/v1/bags`, {
+
+fetch(`http://localhost:3000/api/v1/bags/all`, {
     method: 'GET',
 })
     .then(response => response.json())
@@ -12,19 +14,36 @@ fetch(`http://localhost:3000/api/v1/bags`, {
     .catch(error => console.error('Error fetching user data:', error));
 
 function displayBagsData(data) {
-    document.getElementById("products_section").innerHTML = "";
+    var uniq_list = new Array();
+    document.getElementById("products").innerHTML = "";
     for(let i= 0; i<data.length; i++){
-        var link_to_page = "http://localhost:3000/page?id=" + data[i].id;
-        var prod_name = data[i].product_name;
-        var prod_price = data[i].price;
-        var exapmle_prod_block = `<a href="${link_to_page}" class="product_block">` +
-            '<img class="product_img" src="http://localhost:3000/home/images/i.webp"/>' +
-            `<h4>${prod_name}</h4>` + `<p>text</p> <h4>AED ${prod_price}</h4> </a>`;
+        if ( uniq_list.indexOf(data[i].product_name) == -1){
+            var link_to_page = "http://localhost:3000/product_page?name=" + data[i].product_name;
+            var prod_name = data[i].product_name;
+            var prod_price = data[i].price;
+            var prod_src = data[i].img_path;
+            var exapmle_prod_block = `<a href="${link_to_page}" class="product_block">` +
+                `<img class="product_img" src="http://localhost:3000/images/${prod_src}" onmouseleave="changePictureBack(this)" onmouseenter="changePicture(this)" />` +
+                `<h4>${prod_name}</h4>` + `<p>text</p> <h4 id="price_product">AED ${prod_price}</h4> </a>`;
 
-        document.getElementById("products_section").innerHTML += exapmle_prod_block;
+            document.getElementById("products").innerHTML += exapmle_prod_block;
+            uniq_list.push(prod_name);
+        }
     }
 }
 
+function displayCategoriesInf(data) {
+    document.getElementById("categories").innerHTML = "";
+    for(let i= 0; i<data.value.length; i++){
+        var prod_value = data.value[i];
+        var prod_name = data.name[i];
+        var exapmle_cat_block = `<button name="${prod_name}" value="${prod_value}" onclick="getParameter(this)" class="category_block">` +
+            `<p>${prod_value}</p> <img height="18px" src="http://localhost:3000/images/del.webp"/> </button>`;
+
+        document.getElementById("categories").innerHTML += exapmle_cat_block;
+    }
+    // document.getElementById("price1").checked = false;
+}
 
 function delAllSections() {
     var sections = document.getElementsByClassName('section');
@@ -46,8 +65,22 @@ function delSection(event) {
     document.getElementById(blockId).style.display = "none";
 }
 
+function removeAllParameters(){
+    var menu_blocks = document.getElementsByClassName("menu");
+        for (var i = 0; i < menu_blocks.length; i++) {
+            menu_blocks[i].style.height = hidden_height + 'px';
+        }
+}
+
+
 function displayParameters(arg) {
-    document.getElementById(arg + '_parameters').style.display = document.getElementById(arg + '_parameters').style.display === 'none' ? 'block' : 'none';
+    if (document.getElementById(arg).offsetHeight <= 80) {
+        removeAllParameters();
+
+        document.getElementById(arg).style.height = document.getElementById(arg).offsetHeight + document.getElementById(arg + '_parameters').offsetHeight + "px";
+    }else{
+        removeAllParameters()
+    }
 }
 
 function formConditionData(cond) {
@@ -59,7 +92,7 @@ function formConditionData(cond) {
                 flag += 1;
             }else if (cond.name[j] === "size" && cond.value[j] === products_data[i].size) {
                 flag += 1;
-            }else if (cond.name[j] === "price" && cond.value[j] == products_data[i].price){
+            }else if (cond.name[j] === "price" && cond.value[j].split(" ")[0] == products_data[i].price){
                 flag += 1;
             }
         }
@@ -70,14 +103,43 @@ function formConditionData(cond) {
     displayBagsData(result_obj);
 }
 
+function changePicture(arg){
+    // работает столько с png
+    var need = arg.src
+    arg.src = need.slice(0, need.length - 4) + "_2.png"
+    console.log(arg.src)
+}
+
+function changePictureBack(arg){
+    // работает столько с png
+    var need = arg.src
+    arg.src = need.slice(0, need.length - 6) + ".png"
+    console.log(arg.src)
+}
+
 function getParameter(arg) {
+    console.log(arg.id)
     if (arg.checked) {
         param_obj.value.push(arg.value);
         param_obj.name.push(arg.name);
+        param_obj.id.push(arg.id);
     } else {
         var index_delete = param_obj.value.indexOf(arg.value);
         param_obj.value.splice(index_delete, 1);
         param_obj.name.splice(index_delete, 1);
+
+        document.getElementById(param_obj.id[index_delete]).checked = false;
+        param_obj.id.splice(index_delete, 1);
     }
     formConditionData(param_obj)
+    displayCategoriesInf(param_obj)
 }
+
+var header_height = document.getElementById('bags_title').offsetHeight;
+document.getElementsByTagName('main')[0].style.paddingTop = header_height + 'px';
+
+window.addEventListener('resize', () => {
+    header_height = document.getElementById('bags_title').offsetHeight;
+    document.getElementById('title_bags').style.paddingTop = header_height + 'px';
+});
+

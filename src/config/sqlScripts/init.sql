@@ -18,5 +18,10 @@ insert into bags values
     (6, "Model XZ", "Lois", "Long description", 'BLUE',  "X", 3000, "path_to_image"),
     (7, "Model YX", "Juan", "Long description", 'BLUE',  "XXL", 3000, "path_to_image"),
     (8, "Model YY", "Patric", "Long description", 'RED',  "M", 3000, "path_to_image"),
-    (9, "Model YZ", "Kevin", "Long description", 'YELLOW',  "M", 1000, "path_to_image")
+    (9, "Model YZ", "Kevin", "Long description", 'YELLOW',  "M", 1000, "path_to_image"),
+    (10, "Model X", "Samira", "Long description", 'BLUE',  "M", 1000, "path_to_image"),
+    (11, "Model X", "Samira", "Long description", 'RED',  "M", 1000, "path_to_image"),
+    (12, "Le Chiquito Long", "Kevin", "Long description", 'BLACK',  "M", 3155, "le_chiquito_long_black.png"),
+    (13, "Le Chiquito Long", "Kevin", "Long description", 'WHITE',  "M", 3155, "le_chiquito_long_white.png"),
+    (14, "Le Chiquito Long", "Kevin", "Long description", 'RED',  "M", 3155, "le_chiquito_long_red.png")
 ;

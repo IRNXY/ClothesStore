@@ -23,15 +23,18 @@ const server = http.createServer(async (req, res) => {
         const endpoint = parts[3] // Remove '/api/v1/' from the URL
         switch (endpoint) {
             case 'bags':
-                await handleBagsRequest(req, res);
+                await handleBagsRequest(req, res, parts[4]);
                 break;
-
             default:
                 res.writeHead(404, {'Content-Type': 'application/json'});
                 res.end(JSON.stringify({error: 'Not Found'}));
         }
     } else {
-        let filePath = path.join(__dirname, 'views', req.url === '/' ? 'home/index.html' : req.url);
+        var filePath = path.join(__dirname, 'views', req.url === '/' ? 'home/index.html' : req.url);
+
+        if (filePath.indexOf("?") > -1) {
+            filePath = filePath.slice(0, filePath.indexOf("?"))
+        }
 
         // If the requested URL doesn't have a file extension, assume it's an HTML file
         if (!path.extname(filePath)) {
@@ -40,7 +43,7 @@ const server = http.createServer(async (req, res) => {
 
         const extname = String(path.extname(filePath)).toLowerCase();
         const contentType = mimeTypes[extname] || 'application/octet-stream';
-
+        // console.log(extname, contentType);
         fs.readFile(filePath, (err, content) => {
             if (err) {
                 if (err.code === 'ENOENT') {
