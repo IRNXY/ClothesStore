@@ -147,16 +147,21 @@
 <main>
     <div id="main_block">
         <div id="picture_block">
-            <img src="http://localhost:3000/images/prod_pic_test.png" height="80%" width="100%">
-<!--            <div id="smaller_pic_block">-->
-<!--                <img src="http://localhost:3000/product_page/images/prod_pic_2.png" height="50px" width="50px">-->
-<!--                <img src="http://localhost:3000/product_page/images/prod_pic_3.png" height="50px" width="50px">-->
-<!--                <img src="http://localhost:3000/product_page/images/prod_pic_4.png" height="50px" width="50px">-->
-<!--            </div>-->
+            <div id="movable_pictures">
+                <img id="first_picture" src="http://localhost:3000/images/le_chiquito_long_white.png" height="80%" width="100%">
+                <img id="second_picture" src="http://localhost:3000/images/le_chiquito_long_white_3.png" height="80%" width="100%">
+                <img id="third_picture" src="http://localhost:3000/images/le_chiquito_long_white_4.png" height="80%" width="100%">
+            </div>
+            <div id="arrow_left">
+                <img src="http://localhost:3000/images/arrow_left.png"  id="to_left" onclick="transitionLeft()">
+            </div>
+            <div id="arrow_right">
+                <img src="http://localhost:3000/images/arrow_right.png" id="to_right" onclick="transitionRight()">
+            </div>
         </div>
         <div id="inf_block">
-            <h1>CLIO PEPPIATT</h1>
-            <h3>Petal embellished satin tote</h3>
+            <section id="title_prod">CLIO PEPPIATT</section>
+            <section id="add_text">Petal embellished satin tote</section>
             <div class="section_data" id="amount_price">
                 <p class="extra_text">Amount left: </p>
                 <section id="amount_left"> </section>

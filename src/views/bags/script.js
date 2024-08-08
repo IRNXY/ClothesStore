@@ -118,7 +118,6 @@ function changePictureBack(arg){
 }
 
 function getParameter(arg) {
-    console.log(arg.id)
     if (arg.checked) {
         param_obj.value.push(arg.value);
         param_obj.name.push(arg.name);

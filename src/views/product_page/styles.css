@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: "Garamond", serif;
+    background: #f3f3f3;
 }
 
 header {
@@ -11,6 +12,7 @@ header {
     grid-template-columns: 15% repeat(6, 10%) 25%;
     text-align: center;
     box-shadow: 0px 8px 8px -11px #000000;
+    z-index: 1;
 }
 
 a {
@@ -54,6 +56,48 @@ p {margin: 0;}
 
 #picture_block {
     width: 70%;
+    overflow: hidden;
+    position: relative;
+}
+
+#movable_pictures{
+    display: flex;
+    left: 0;
+    transition: 1s ease-out;
+    position: relative;
+}
+
+#arrow_left {
+    visibility: hidden;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+    left: 10px;
+    top: -50%;
+    height: 30px;
+    width: 32px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+#arrow_right {
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+    top: calc(-50% - 40px);
+    height: 30px;
+    width: 30px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+#to_left{
+    height: 25px;
+    width: 25px;
+}
+#to_right{
+    height: 25px;
+    width: 25px;
 }
 
 
@@ -75,6 +119,18 @@ p {margin: 0;}
 .extra_text {
     font-size: 16px;
     color: grey;
+}
+
+#title_prod {
+    margin-top: 30px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+#add_text {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #amount_price{
@@ -149,12 +205,13 @@ p {margin: 0;}
 
 .menu {
     font-family: "Gill Sans", sans-serif;
-    border-bottom: 1px solid #bdbdbd;
+    /*border-bottom: 1px solid #bdbdbd;*/
     padding: 20px;
+    padding-left: 0;
     overflow: hidden;
     transition: height 1s;
     height: 9px;
-    width: 30%;
+    width: 60%;
 }
 
 .menu p{

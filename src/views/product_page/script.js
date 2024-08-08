@@ -1,9 +1,10 @@
-var url = window.location.search
-
-var product_param = url.substring(url.indexOf('?') + 1);
-var product_name = product_param.split('=')[1];
 var hidden_height = 9;
 var all_bag_info = []
+var block_num = 0;
+
+var url = window.location.search
+var product_param = url.substring(url.indexOf('?') + 1);
+var product_name = product_param.split('=')[1];
 fetch(`http://localhost:3000/api/v1/bags/${product_name}`, {method:"GET"})
     .then(response => response.json())
     .then(data => {
@@ -72,9 +73,17 @@ function displayPossibleColors(data) {
 }
 
 function displayData(arg) {
+    document.getElementById("title_prod").innerText = arg.product_name;
+    document.getElementById("add_text").innerText = arg.description;
     document.getElementById("amount_left").innerText = "1";
     document.getElementById("price").innerText = arg.price;
     document.getElementById("color_picked").innerText = arg.color;
+
+    var standart_path = "http://localhost:3000/images/"
+    document.getElementById("first_picture").src = standart_path + arg.img_path;
+    var patrs = arg.img_path.split(".");
+    document.getElementById("second_picture").src = standart_path + patrs[0] + "_3." + patrs[1];
+    document.getElementById("third_picture").src = standart_path + patrs[0] + "_2." + patrs[1];
 }
 
 function giveBorder(arg){
@@ -91,13 +100,47 @@ function giveBorder(arg){
     }
 }
 
+function transitionLeft(){
+    block_num = block_num - 1;
+    if (block_num === 0){
+        document.getElementById("arrow_left").style.visibility = "hidden";
+    }else if (block_num === 1) {
+        document.getElementById("arrow_right").style.visibility = "visible";
+    }
+    objectPosition()
+}
+
+function transitionRight(){
+    block_num = block_num + 1;
+    if (block_num === 2){
+        document.getElementById("arrow_right").style.visibility = "hidden";
+    }else if (block_num === 1) {
+        document.getElementById("arrow_left").style.visibility = "visible";
+    }
+    objectPosition()
+}
+
+
+function objectPosition(){
+    var window_size = document.getElementById('picture_block').offsetWidth * -1;
+    document.getElementById("movable_pictures").style.left = window_size * block_num + "px";
+}
+
+
+var picture_width = document.getElementById('first_picture').offsetWidth;
+document.getElementById('arrow_right').style.left = (picture_width - 40) + 'px';
 
 var header_height = document.getElementById('bags_title').offsetHeight;
 document.getElementsByTagName('main')[0].style.paddingTop = header_height + 'px';
 
+
 window.addEventListener('resize', () => {
+    var picture_width = document.getElementById('first_picture').offsetWidth;
+    document.getElementById('arrow_right').style.left = (picture_width - 40) + 'px';
+
     header_height = document.getElementById('bags_title').offsetHeight;
     document.getElementsByTagName('main')[0].style.paddingTop = header_height + 'px';
-});
 
+    objectPosition()
+});
 
