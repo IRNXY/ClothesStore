@@ -30,9 +30,10 @@
     <div class="section_heading" id="sales_title" onmouseenter="addSection(event)">
         <p>Sales</p>
     </div>
-    <div class="section_heading" onmouseenter="delAllSections()">
-        <img src="http://localhost:3000/images/icons.png">
-    </div>
+    <a class="section_heading" id="shopping_cart_block" href="/order" onmouseenter="delAllSections()">
+        <img src="http://localhost:3000/images/shopping_cart_3.png" height="35px" width="35px">
+        <section id="order_num">0</section>
+    </a>
 
     <div class="section" id="brandName" onmouseleave="delSection(event)">
         <div class="subsection_columns">
@@ -151,6 +152,7 @@
                 <img id="first_picture" src="http://localhost:3000/images/le_chiquito_long_white.png" height="80%" width="100%">
                 <img id="second_picture" src="http://localhost:3000/images/le_chiquito_long_white_3.png" height="80%" width="100%">
                 <img id="third_picture" src="http://localhost:3000/images/le_chiquito_long_white_4.png" height="80%" width="100%">
+                <img id="fourth_picture" src="http://localhost:3000/images/le_chiquito_long_white_4.png" height="80%" width="100%">
             </div>
             <div id="arrow_left">
                 <img src="http://localhost:3000/images/arrow_left.png"  id="to_left" onclick="transitionLeft()">
@@ -160,73 +162,87 @@
             </div>
         </div>
         <div id="inf_block">
-            <section id="title_prod">CLIO PEPPIATT</section>
-            <section id="add_text">Petal embellished satin tote</section>
-            <div class="section_data" id="amount_price">
-                <p class="extra_text">Amount left: </p>
-                <section id="amount_left"> </section>
-            </div>
-            <div class="section_data">
-                <h4 >AED</h4>
-                <section id="price">  </section>
-                <p class="extra_text" id="local_taxes">(Local taxes and duties included)</p>
-            </div>
-            <div class="section_data" id="color_section">
-                <p class="extra_text">Color:  </p>
-                <section id="color_picked">  </section>
-            </div>
-            <section id="color_menu">
+            <div id="sticky_pos">
+                <section id="title_prod">CLIO PEPPIATT</section>
+                <section id="add_text">Petal embellished satin tote</section>
+                <div class="section_data" id="amount_price">
+                    <p class="extra_text">Amount left: </p>
+                    <section id="amount_left"> </section>
+                </div>
+                <div class="section_data">
+                    <h4 >AED</h4>
+                    <section id="price">  </section>
+                    <p class="extra_text" id="local_taxes">(Local taxes and duties included)</p>
+                </div>
+                <div class="section_data" id="color_section">
+                    <p class="extra_text">Color:  </p>
+                    <section id="color_picked">  </section>
+                </div>
+                <section id="color_menu">
 
-            </section>
-            <button id="add_to_bag"> Add to Bag</button>
-            <div id="addition_info">
-                <div class="menu" id="editor">
+                </section>
+                <button id="add_to_bag" onclick="placeInBag()"> Add to Bag</button>
+                <div id="addition_info">
+                    <div class="menu" id="details">
+                        <div class="flex_row">
+                            <p class="add_inf_header">Details</p>
+                            <button class="button_category"  onclick="displayParameters('details')">
+                                <img src="http://localhost:3000/images/arrow.png" height="25xp">
+                            </button>
+                        </div>
+                        <div id="details_parameters">
+                            <p>Beaded shoulder-bag</p>
+                            <p>- Structured bag in shiny spazzolato leather</p>
+                            <p>- Adjustable buckled shoulder strap</p>
+                            <p>- Wooden beads</p>
+                            <p>- Zip closure</p>
+                            <p>- Piped outline</p>
+                            <p>- Interior patch pocket</p>
+                            <p>- Gold-plated logo and hardware</p>
+                            <p>- Fully lined in cotton</p>
+                            <p>- Length: 27cm</p>
+                            <p>- Height: 10.5cm</p>
+                            <p>Composition:100% Calfskin / Lining: 100% Cotton</p>
+                        </div>
+                    </div>
+
+                    <div class="menu" id="delivery_returns">
+                        <div class="flex_row">
+                            <p class="add_inf_header">Delivery & Returns</p>
+                            <button class="button_category" onclick="displayParameters('delivery_returns')">
+                                <img src="http://localhost:3000/images/arrow.png" height="25xp">
+                            </button>
+                        </div>
+                        <div id="delivery_returns_parameters">
+                            <p><b>EXPRESS DELIVERY</b> - Within 4 hours (9AM-4PM) and the next day - Complimentary. Exclusions apply.</p>
+                            <p><b>STANDARD DELIVERY</b> - Within 1 to 2 working days - Complimentary.</p>
+                            <p style="margin-top: 20px;">Orders placed before 5PM (Dubai time) will be shipped the same day.</p>
+                            <h4>COMPLIMENTARY TAILORING</h4>
+                            <p>We offer free basic alterations for our Ready-To-Wear items.
+                                To tailor your purchase, simply bring it to our Dubai Mall Boutique and ask the team for assistance.
+                                For more details, please contact our Customer Care team.</p>
+                            <h4>FREE RETURNS</h4>
+                            <p>You have 14 days from the date of delivery of your order to return the items for free. Exclusions apply. For more details, read our return policy.</p>
+                            <h4>SECURE PAYMENT</h4>
+                            <p>Credit/debit card</p>
+                            <p>Apple pay</p>
+                            <p>Tabby</p>
+                            <p>Tamara</p>
+                        </div>
+                    </div>
+                    <div class="menu" id="assistance">
                     <div class="flex_row">
-                        <p class="add_inf_header">EDITOR'S NOTES</p>
-                        <button class="button_category"  onclick="displayParameters('editor')">
-                            <img src="http://localhost:3000/images/arrow.png" height="25xp">
+                        <p class="add_inf_header">Assistance</p>
+                        <button class="button_category" onclick="displayParameters('assistance')">
+                            <img src="http://localhost:3000/images/arrow.png" height="25xp" class="">
                         </button>
                     </div>
-                    <div id="editor_parameters">
-                        <p>Clio Peppiatt's 'Petal' tote will bring a touch of femininity to every outfit.
-                            Made from satin, it's hand-embellished with beads and faux pearls that beautifully catch the light from every angle.
-                            It can easily fit your night-out essentials, like a phone, keys and lip gloss.</p>
-
+                    <div id="assistance_parameters" >
+                        <p>Email us customercare@jacquemus.ae</p>
+                        <p>Or visit the Customer Section</p>
                     </div>
                 </div>
-
-                <div class="menu" id="size">
-                    <div class="flex_row">
-                        <p class="add_inf_header">SIZE</p>
-                        <button class="button_category" onclick="displayParameters('size')">
-                            <img src="http://localhost:3000/images/arrow.png" height="25xp">
-                        </button>
-                    </div>
-                    <div id="size_parameters">
-                        <p>This item’s measurements are:
-                            Product measurements:
-                            Handle Drop: 6cm / 2.4in
-                            Height: 13cm / 5.1in
-                            Width: 23cm / 9.1in
-                            Depth: 7cm / 2.8in </p>
-                    </div>
                 </div>
-                <div class="menu" id="details_care">
-                <div class="flex_row">
-                    <p class="add_inf_header">DETAILS & CARE</p>
-                    <button class="button_category" onclick="displayParameters('details_care')">
-                        <img src="http://localhost:3000/images/arrow.png" height="25xp" class="">
-                    </button>
-                </div>
-                <div id="details_care_parameters" >
-                    <p>Pink satin
-                        Top handle
-                        Internal slip pocket
-                        Fully lined
-                        Snap fastening at open top
-                        Designer color: Cherry Blossom</p>
-                </div>
-            </div>
             </div>
         </div>
     </div>

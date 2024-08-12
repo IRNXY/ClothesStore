@@ -30,9 +30,10 @@
     <div class="section_heading" id="sales_title" onmouseenter="addSection(event)">
         <p>Sales</p>
     </div>
-    <div class="section_heading" onmouseenter="delAllSections()">
-        <img src="http://localhost:3000/images/icons.png">
-    </div>
+    <a class="section_heading" id="shopping_cart_block" href="/order" onmouseenter="delAllSections()">
+        <img src="http://localhost:3000/images/shopping_cart_3.png" height="35px" width="35px">
+        <section id="order_num">0</section>
+    </a>
 
     <div class="section" id="brandName" onmouseleave="delSection(event)">
         <div class="subsection_columns">

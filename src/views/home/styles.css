@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: "Garamond", serif;
 }
-
+/* all about header start*/
 header {
     position: fixed;
     width: 100%;
@@ -10,6 +10,7 @@ header {
     display: grid;
     grid-template-columns: 15% repeat(6, 10%) 25%;
     text-align: center;
+    margin: 0;
     box-shadow: 0px 8px 8px -11px #000000;
 }
 
@@ -25,6 +26,7 @@ p {margin: 0;}
     font-size: 22px;
     margin-left: 5px;
     margin-right: 5px;
+    font-family: "Garamond", serif;
 }
 
 .section {
@@ -46,6 +48,21 @@ p {margin: 0;}
     text-align: center;
 }
 
+#shopping_cart_block{
+    display: flex;
+    justify-content: end;
+    padding-right: 90px;
+}
+
+#order_num {
+    position: relative;
+    left: -24px;
+    top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #8090f6;
+}
+/* all about header end*/
 
 #main_img {
     width: 100%;

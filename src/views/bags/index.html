@@ -30,9 +30,10 @@
     <div class="section_heading" id="sales_title" onmouseenter="addSection(event)">
         <p>Sales</p>
     </div>
-    <div class="section_heading" onmouseenter="delAllSections()">
-        <img src="http://localhost:3000/images/icons.png">
-    </div>
+    <a class="section_heading" id="shopping_cart_block" href="/order" onmouseenter="delAllSections()">
+        <img src="http://localhost:3000/images/shopping_cart_3.png" height="35px" width="35px">
+        <section id="order_num">0</section>
+    </a>
 
     <div class="section" id="brandName" onmouseleave="delSection(event)">
         <div class="subsection_columns">
@@ -150,44 +151,98 @@
     </div>
     <div class="section_container">
         <div id="dropdown_menus">
-            <div class="menu" id="color">
-                <div class="flex_row">
-                    <p>Color</p>
-                    <button class="button_category"  onclick="displayParameters('color')">
-                        <img src="http://localhost:3000/images/arrow.png" height="25xp">
-                    </button>
+            <div id="sticky_pos">
+                <div class="menu" id="category">
+                    <div class="flex_row">
+                        <p>Category</p>
+                        <button class="button_category" onclick="displayParameters('category')">
+                            <img src="http://localhost:3000/images/arrow.png" height="25xp">
+                        </button>
+                    </div>
+                    <div id="category_parameters" class="parameters">
+                        <div class="checkbox-rect">
+                            <input type="checkbox" id="category1" name="category" value="Mini Bags" onchange="getParameter(this)">
+                            <label for="category1">Mini Bags</label><br>
+                            <input type="checkbox" id="category2" name="category" value="Shoulder Bags" onchange="getParameter(this)">
+                            <label for="category2"> Shoulder Bags </label><br>
+                            <input type="checkbox" id="category3" name="category" value="Baskets & Tote Bags" onchange="getParameter(this)">
+                            <label for="category3"> Baskets & Tote Bags </label><br>
+                            <input type="checkbox" id="category4" name="category" value="Cross-body Bags" onchange="getParameter(this)">
+                            <label for="category4"> Cross-body Bags </label><br>
+                        </div>
+                    </div>
                 </div>
-                <div id="color_parameters">
-                    <input type="checkbox" id="color1" name="color" on value="RED" onchange="getParameter(this)">
-                    <label for="color1">RED</label><br>
-                    <input type="checkbox" id="color2" name="color" value="YELLOW" onchange="getParameter(this)">
-                    <label for="color2"> YELLOW</label><br>
-                    <input type="checkbox" id="color3" name="color" value="BLUE" onchange="getParameter(this)">
-                    <label for="color3"> BLUE</label><br>
+                <div class="menu" id="color">
+                    <div class="flex_row">
+                        <p>Color</p>
+                        <button class="button_category"  onclick="displayParameters('color')">
+                            <img src="http://localhost:3000/images/arrow.png" height="25xp">
+                        </button>
+                    </div>
+                    <div id="color_parameters" class="parameters">
+                        <div class="checkbox-rect">
+                            <input type="checkbox" id="color1" name="color" value="RED" onchange="getParameter(this)">
+                            <label for="color1">Red</label><br>
+                            <input type="checkbox" id="color2" name="color" value="YELLOW" onchange="getParameter(this)">
+                            <label for="color2"> Yellow</label><br>
+                            <input type="checkbox" id="color3" name="color" value="BLUE" onchange="getParameter(this)">
+                            <label for="color3"> Blue</label><br>
+                            <input type="checkbox" id="color4" name="color" value="BLACK" onchange="getParameter(this)">
+                            <label for="color4"> Black </label><br>
+                            <input type="checkbox" id="color5" name="color" value="WHITE" onchange="getParameter(this)">
+                            <label for="color5"> White </label><br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu" id="fabric">
+                    <div class="flex_row">
+                        <p>Fabric</p>
+                        <button class="button_category" onclick="displayParameters('fabric')">
+                            <img src="http://localhost:3000/images/arrow.png" height="25xp">
+                        </button>
+                    </div>
+                    <div id="fabric_parameters" class="parameters">
+                        <div class="checkbox-rect">
+                            <input type="checkbox" id="fabric1" name="fabric" value="Cotton" onchange="getParameter(this)">
+                            <label for="fabric1">Cotton</label><br>
+                            <input type="checkbox" id="fabric2" name="fabric" value="Crepe" onchange="getParameter(this)">
+                            <label for="fabric2"> Crepe </label><br>
+                            <input type="checkbox" id="fabric3" name="fabric" value="Leather" onchange="getParameter(this)">
+                            <label for="fabric3"> Leather </label><br>
+                            <input type="checkbox" id="fabric4" name="fabric" value="Satin" onchange="getParameter(this)">
+                            <label for="fabric4"> Satin </label><br>
+                            <input type="checkbox" id="fabric5" name="fabric" value="Suede" onchange="getParameter(this)">
+                            <label for="fabric5"> Suede </label><br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu" id="price">
+                    <div class="flex_row">
+                        <p>Price</p>
+                        <button class="button_category" onclick="displayParameters('price')">
+                            <img src="http://localhost:3000/images/arrow.png" height="25xp">
+                        </button>
+                    </div>
+                    <div id="price_parameters" class="parameters">
+                        <div class="checkbox-rect">
+                            <input type="checkbox" id="price1" name="price" value="0-1000" onchange="getParameter(this)">
+                            <label for="price1">Under AED 1000</label><br>
+                            <input type="checkbox" id="price2" name="price" value="1000-2000" onchange="getParameter(this)">
+                            <label for="price2"> AED 1,000 - AED 2,000 </label><br>
+                            <input type="checkbox" id="price3" name="price" value="2000-5000" onchange="getParameter(this)">
+                            <label for="price3"> AED 2,000 - AED 5,000 </label><br>
+                            <input type="checkbox" id="price4" name="price" value="5000-10000" onchange="getParameter(this)">
+                            <label for="price4"> AED 5,000 - AED 10,000 </label><br>
+                            <input type="checkbox" id="price5" name="price" value="10000-20000" onchange="getParameter(this)">
+                            <label for="price5"> AED 10,000 - AED 20,000 </label><br>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="menu" id="size">
-                <div class="flex_row">
-                    <p>Size</p>
-                    <button class="button_category" onclick="displayParameters('size')">
-                        <img src="http://localhost:3000/images/arrow.png" height="25xp">
-                    </button>
-                </div>
-                <div id="size_parameters">
-                    <input type="checkbox" id="size1" name="size" value="X" onchange="getParameter(this)">
-                    <label for="size1">X</label><br>
-                    <input type="checkbox" id="size2" name="size" value="XXL" onchange="getParameter(this)">
-                    <label for="size2"> XXL </label><br>
-                    <input type="checkbox" id="size3" name="size" value="M" onchange="getParameter(this)">
-                    <label for="size3"> M </label><br>
-                </div>
-            </div>
-
-
         </div>
-
-        <div class="" id="products_section">
+        <div id="products_section">
             <div id="categories">
 
             </div>

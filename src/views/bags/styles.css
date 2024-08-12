@@ -3,6 +3,13 @@ body {
     font-family: "Garamond", serif;
 }
 
+h4{
+    font-family: "Gill Sans", sans-serif;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* all about header start*/
 header {
     position: fixed;
     width: 100%;
@@ -19,27 +26,19 @@ a {
     color: #000000;
 }
 
-p {
-    margin: 0;
-    font-family: "Gill Sans", sans-serif;
-}
-
-h4{
-    font-family: "Gill Sans", sans-serif;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
+p {margin: 0;}
 
 .section_heading {
     padding: 10px;
     font-size: 22px;
     margin-left: 5px;
     margin-right: 5px;
+    font-family: "Garamond", serif;
 }
 
 .section {
-    display: none;
     grid-column: 1/-1;
+    display: none;
     text-align: start;
 }
 
@@ -48,6 +47,7 @@ h4{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     font-size: 16px;
     font-family: sans-serif;
+
 }
 
 .subsection_columns p {
@@ -55,6 +55,22 @@ h4{
     padding: 5px;
     text-align: center;
 }
+
+#shopping_cart_block{
+    display: flex;
+    justify-content: end;
+    padding-right: 90px;
+}
+
+#order_num {
+    position: relative;
+    left: -24px;
+    top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #8090f6;
+}
+/* all about header end*/
 
 .section_container {
     display: flex;
@@ -71,6 +87,11 @@ h4{
 }
 #text_title {
     text-align: center;
+}
+
+#sticky_pos {
+    position: sticky;
+    top: 70px;
 }
 
 #dropdown_menus{
@@ -98,13 +119,17 @@ h4{
     align-content: end;
 }
 
-#color_parameters {
-    display: block;
+.parameters input {
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .product_block {
     text-decoration: none;
     color: #000000;
+    margin: 10px;
+    width: 90%;
+    height: 80%;
 }
 
 #price_product {
@@ -122,8 +147,8 @@ h4{
 }
 
 .product_img {
-    height: 320px;
-    width: 270px;
+    height: 100%;
+    width: 100%;
 }
 
 #products_section {
@@ -145,4 +170,47 @@ h4{
     display: flex;
     width: 100%;
     justify-content: space-between;
+}
+
+
+/*check box*/
+.checkbox-rect input[type="checkbox"] {
+  display: none;
+}
+.checkbox-rect input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  font: 16px "Open Sans", Arial, sans-serif;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.checkbox-rect input[type="checkbox"] + label:last-child {
+  margin-bottom: 0;
+}
+.checkbox-rect input[type="checkbox"] + label:before {
+  content: "";
+  display: block;
+  width: 0.9em;
+  height: 0.9em;
+  border: 1px solid #343a3f;
+  border-radius: 0.2em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transition: all 0.2s, background 0.2s ease-in-out;
+  transition: all 0.2s, background 0.2s ease-in-out;
+  background: #f3f3f3;
+}
+.checkbox-rect input[type="checkbox"]:checked + label:before {
+  width: 1em;
+  height: 1em;
+  border-radius: 0.2em;
+  border: 2px solid #fff;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  background: #50565a;
+  box-shadow: 0 0 0 1px #000;
 }

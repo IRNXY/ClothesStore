@@ -1,7 +1,7 @@
-const recipeRepository = require("../dataAccess/bagsRepository");
+const bagsRepository = require("../dataAccess/bagsRepository");
 
 async function getAllBags() {
-    return await recipeRepository.getAllBags()
+    return await bagsRepository.getAllBags()
         .then(result => {
             return result
         });
@@ -11,7 +11,7 @@ async function getAllBags() {
 async function getBagByName(name) {
     let pattern = /%20/g
     var correct_name = name.replace(pattern, " ")
-    return await recipeRepository.getBagByName(correct_name)
+    return await bagsRepository.getBagByName(correct_name)
         .then(result => {
             return result
         });

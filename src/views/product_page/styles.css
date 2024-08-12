@@ -1,9 +1,10 @@
 body {
     margin: 0;
     font-family: "Garamond", serif;
-    background: #f3f3f3;
+    background: #f1f1f1;
 }
 
+/* all about header start*/
 header {
     position: fixed;
     width: 100%;
@@ -11,6 +12,7 @@ header {
     display: grid;
     grid-template-columns: 15% repeat(6, 10%) 25%;
     text-align: center;
+    margin: 0;
     box-shadow: 0px 8px 8px -11px #000000;
     z-index: 1;
 }
@@ -27,6 +29,7 @@ p {margin: 0;}
     font-size: 22px;
     margin-left: 5px;
     margin-right: 5px;
+    font-family: "Garamond", serif;
 }
 
 .section {
@@ -47,6 +50,22 @@ p {margin: 0;}
     padding: 5px;
     text-align: center;
 }
+
+#shopping_cart_block{
+    display: flex;
+    justify-content: end;
+    padding-right: 90px;
+}
+
+#order_num {
+    position: relative;
+    left: -24px;
+    top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #8090f6;
+}
+/* all about header end*/
 
 #main_block {
     width: 100%;
@@ -100,6 +119,10 @@ p {margin: 0;}
     width: 25px;
 }
 
+#sticky_pos {
+    position: sticky;
+    top: 70px;
+}
 
 #inf_block {
     width: 50%;
@@ -129,7 +152,7 @@ p {margin: 0;}
 
 #add_text {
     margin-top: 10px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
 }
 
@@ -138,19 +161,19 @@ p {margin: 0;}
 }
 
 #amount_left {
-    font-size: 16px;
+    font-size: 14px;
     margin-left: 10px;
     font-weight: bold;
 }
 
 #price {
     margin: 17px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }
 
 #color_picked {
-    font-size: 16px;
+    font-size: 14px;
     margin-left: 10px;
     font-weight: bold;
 }
@@ -181,8 +204,7 @@ p {margin: 0;}
     padding: 3px;
 }
 
-#circle1_inner {background-color: #fff2f2
-}
+#circle1_inner {background-color: #fff2f2}
 #circle2_inner {background-color: black}
 #circle3_inner {background-color: yellow}
 #circle4_inner {background-color: blue}
@@ -221,7 +243,7 @@ p {margin: 0;}
 .button_category{
     font-size: 20px;
     border: none;
-    background-color: #ffffff;
+    background-color: #f1f1f1;
     align-content: end;
 }
 
@@ -251,12 +273,12 @@ p {margin: 0;}
 }
 
 .add_inf_header {
-    font-size: 16px;
+    font-size: 19px;
     font-weight: bold;
 }
 
 
 
 #editor_parameters {
-    font-size: 14px;
+    font-size: 17px;
 }

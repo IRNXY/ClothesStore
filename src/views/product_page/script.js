@@ -1,19 +1,14 @@
 var hidden_height = 9;
 var all_bag_info = []
 var block_num = 0;
+var color_now = ""
 
-var url = window.location.search
-var product_param = url.substring(url.indexOf('?') + 1);
-var product_name = product_param.split('=')[1];
-fetch(`http://localhost:3000/api/v1/bags/${product_name}`, {method:"GET"})
-    .then(response => response.json())
-    .then(data => {
-        all_bag_info = data;
-        displayData(data[0])
-        displayPossibleColors(data)
-    })
-    .catch(error => console.error('Error fetching user data:', error));
+styleEdit()
 
+
+// about header: start
+getNumOfOrders()
+styleEdit()
 
 function delAllSections(){
     var sections = document.getElementsByClassName('section');
@@ -34,6 +29,52 @@ function delSection(event) {
     const blockId = event.target.id
     document.getElementById(blockId).style.display = "none";
 }
+
+
+function getNumOfOrders(){
+    let user_id = document.cookie.split('=')[1]
+    fetch(`http://localhost:3000/api/v1/orders/${user_id}`, {method:"GET"})
+    .then(response => response.json())
+    .then(data => {
+        displayAmountOfOrders(data.length)
+    })
+    .catch(error => console.error('Error fetching user data:', error));
+}
+
+
+function displayAmountOfOrders(arg){
+    document.getElementById("order_num").innerHTML = (arg === 0) ? "": arg;
+    if (arg < 10) {
+        document.getElementById("order_num").style.left = "-21px"
+    }
+}
+
+function styleEdit(){
+    var picture_width = document.getElementById('first_picture').offsetWidth;
+    document.getElementById('arrow_right').style.left = (picture_width - 40) + 'px';
+
+    var header_height = document.getElementById('bags_title').offsetHeight;
+    document.getElementsByTagName('main')[0].style.paddingTop = header_height + 'px';
+}
+
+window.addEventListener('resize', () => {
+    styleEdit()
+    objectPosition()
+});
+
+// about header: end
+
+var url = window.location.search
+var product_param = url.substring(url.indexOf('?') + 1);
+var product_name = product_param.split('=')[1];
+fetch(`http://localhost:3000/api/v1/bags/${product_name}`, {method:"GET"})
+    .then(response => response.json())
+    .then(data => {
+        all_bag_info = data;
+        displayData(data[0])
+        displayPossibleColors(data)
+    })
+    .catch(error => console.error('Error fetching user data:', error));
 
 
 
@@ -73,8 +114,9 @@ function displayPossibleColors(data) {
 }
 
 function displayData(arg) {
+    color_now = arg.color;
     document.getElementById("title_prod").innerText = arg.product_name;
-    document.getElementById("add_text").innerText = arg.description;
+    document.getElementById("add_text").innerText = arg.short_description;
     document.getElementById("amount_left").innerText = "1";
     document.getElementById("price").innerText = arg.price;
     document.getElementById("color_picked").innerText = arg.color;
@@ -84,6 +126,7 @@ function displayData(arg) {
     var patrs = arg.img_path.split(".");
     document.getElementById("second_picture").src = standart_path + patrs[0] + "_3." + patrs[1];
     document.getElementById("third_picture").src = standart_path + patrs[0] + "_2." + patrs[1];
+    document.getElementById("fourth_picture").src = standart_path + patrs[0] + "_4." + patrs[1];
 }
 
 function giveBorder(arg){
@@ -92,6 +135,7 @@ function giveBorder(arg){
     }
     document.getElementById(arg.id).style.border = "1px solid black";
     let color = document.getElementById("circle_" + arg.id.split("_")[1] + "_inner").style.backgroundColor;
+    color_now = color;
     for (let i = 0; i < all_bag_info.length; i++){
         if (all_bag_info[i].color === color.toUpperCase()){
             displayData(all_bag_info[i]);
@@ -104,7 +148,7 @@ function transitionLeft(){
     block_num = block_num - 1;
     if (block_num === 0){
         document.getElementById("arrow_left").style.visibility = "hidden";
-    }else if (block_num === 1) {
+    }else if (block_num === 2) {
         document.getElementById("arrow_right").style.visibility = "visible";
     }
     objectPosition()
@@ -112,7 +156,7 @@ function transitionLeft(){
 
 function transitionRight(){
     block_num = block_num + 1;
-    if (block_num === 2){
+    if (block_num === 3){
         document.getElementById("arrow_right").style.visibility = "hidden";
     }else if (block_num === 1) {
         document.getElementById("arrow_left").style.visibility = "visible";
@@ -126,21 +170,30 @@ function objectPosition(){
     document.getElementById("movable_pictures").style.left = window_size * block_num + "px";
 }
 
+function placeInBag(){
+    let u_id = getUserCookies();
+    let p_id = getProductId();
+    fetch(`http://localhost:3000/api/v1/orders`,
+        {method:"POST",
+             headers: {'Content-Type': 'application/json'},
+             body: JSON.stringify({user_id: u_id, product_id: p_id}),
+        })
+    .then(response => response.json())
+    .then(data => { console.log(data); window.location.reload() })
+    .catch(error => console.error('Error fetching order data:', error));
+}
 
-var picture_width = document.getElementById('first_picture').offsetWidth;
-document.getElementById('arrow_right').style.left = (picture_width - 40) + 'px';
+function getUserCookies() {
+    return document.cookie.split('=')[1]
+}
 
-var header_height = document.getElementById('bags_title').offsetHeight;
-document.getElementsByTagName('main')[0].style.paddingTop = header_height + 'px';
+function getProductId(){
+    for (let i = 0; i < all_bag_info.length; i++){
+        if (all_bag_info[i].color === color_now.toUpperCase()){
+            return all_bag_info[i].id;
+        }
+    }
+}
 
 
-window.addEventListener('resize', () => {
-    var picture_width = document.getElementById('first_picture').offsetWidth;
-    document.getElementById('arrow_right').style.left = (picture_width - 40) + 'px';
-
-    header_height = document.getElementById('bags_title').offsetHeight;
-    document.getElementsByTagName('main')[0].style.paddingTop = header_height + 'px';
-
-    objectPosition()
-});
 
