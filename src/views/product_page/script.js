@@ -9,6 +9,7 @@ styleEdit()
 // about header: start
 getNumOfOrders()
 styleEdit()
+setUserCookies()
 
 function delAllSections(){
     var sections = document.getElementsByClassName('section');
@@ -179,8 +180,19 @@ function placeInBag(){
              body: JSON.stringify({user_id: u_id, product_id: p_id}),
         })
     .then(response => response.json())
-    .then(data => { console.log(data); window.location.reload() })
+    .then(data => { processResult(data)  })
     .catch(error => console.error('Error fetching order data:', error));
+}
+
+function processResult(data){
+    console.log(data)
+    if (data.status && data.status === "fail"){
+        document.getElementById("error").style.opacity = "1";
+        setTimeout(()=>{document.getElementById("error").style.opacity = "0"; }, 3000)
+    }else{
+        reveal()
+        getNumOfOrders()
+    }
 }
 
 function getUserCookies() {
@@ -195,7 +207,7 @@ function getProductId(){
     }
 }
 
-function getId(){
+function creatId(){
     let strings = window.crypto.getRandomValues(new BigUint64Array(2));
     let id = strings[0].toString(36) + strings[1].toString(36).toUpperCase();
     return id;
@@ -204,8 +216,20 @@ function getId(){
 function setUserCookies() {
     if (!(document.cookie)){
         let name = "user_id"
-        let value = getId()
+        let value = creatId()
         document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
     }
+}
+
+function reveal(){
+    document.getElementById("add_to_bag").disabled = true;
+    document.getElementById("button_text").style.display = "none";
+    document.getElementsByClassName("checkmark")[0].style.display = "block";
+
+    setTimeout(() => {
+        document.getElementsByClassName("checkmark")[0].style.display = "none";
+        document.getElementById("button_text").style.display = "block";
+        document.getElementById("add_to_bag").disabled = false;
+        }, 2000);
 }
 

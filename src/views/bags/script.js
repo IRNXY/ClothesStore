@@ -6,6 +6,7 @@ var hidden_height = 9;
 // about header: start
 getNumOfOrders()
 resizeHeader()
+setUserCookies()
 
 function delAllSections(){
     var sections = document.getElementsByClassName('section');
@@ -174,7 +175,7 @@ function getParameter(arg) {
     displayCategoriesInf(param_obj)
 }
 
-function getId(){
+function creatId(){
     let strings = window.crypto.getRandomValues(new BigUint64Array(2));
     let id = strings[0].toString(36) + strings[1].toString(36).toUpperCase();
     return id;
@@ -183,7 +184,7 @@ function getId(){
 function setUserCookies() {
     if (!(document.cookie)){
         let name = "user_id"
-        let value = getId()
+        let value = creatId()
         document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
     }
 }

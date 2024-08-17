@@ -181,13 +181,20 @@
                 <section id="color_menu">
 
                 </section>
-                <button id="add_to_bag" onclick="placeInBag()"> Add to Bag</button>
+                <button id="add_to_bag" onclick="placeInBag()">
+                    <p id="button_text">Add to Bag</p>
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </button>
+                <p id="error">Product already in your shopping cart</p>
                 <div id="addition_info">
                     <div class="menu" id="details">
                         <div class="flex_row">
                             <p class="add_inf_header">Details</p>
                             <button class="button_category"  onclick="displayParameters('details')">
-                                <img src="http://localhost:3000/images/arrow.png" height="25xp">
+                                <img src="http://localhost:3000/images/arrow.png" height="25xp" class="arrow_down">
                             </button>
                         </div>
                         <div id="details_parameters">
@@ -210,7 +217,7 @@
                         <div class="flex_row">
                             <p class="add_inf_header">Delivery & Returns</p>
                             <button class="button_category" onclick="displayParameters('delivery_returns')">
-                                <img src="http://localhost:3000/images/arrow.png" height="25xp">
+                                <img src="http://localhost:3000/images/arrow.png" height="25xp" class="arrow_down">
                             </button>
                         </div>
                         <div id="delivery_returns_parameters">
@@ -234,7 +241,7 @@
                     <div class="flex_row">
                         <p class="add_inf_header">Assistance</p>
                         <button class="button_category" onclick="displayParameters('assistance')">
-                            <img src="http://localhost:3000/images/arrow.png" height="25xp" class="">
+                            <img src="http://localhost:3000/images/arrow.png" height="25xp" class="arrow_down">
                         </button>
                     </div>
                     <div id="assistance_parameters" >

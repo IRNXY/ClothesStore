@@ -101,6 +101,7 @@ p {margin: 0;}
 .bin_del_pic {
     height: 20px;
     width: 20px;
+    cursor: pointer;
 }
 .info_left{
     width: 40%;

@@ -9,7 +9,7 @@ async function handleOrdersRequest(req, res, part) {
 
             res.writeHead(200, {'Content-Type': 'application/json'});
             res.end(JSON.stringify(result));
-        }catch(err) {
+        }catch(error) {
             res.writeHead(400, {'Content-Type': 'application/json'});
             res.end(JSON.stringify({error: `${error}`}));
         }
@@ -26,10 +26,11 @@ async function handleOrdersRequest(req, res, part) {
                 // Parse the received JSON data
                 const jsonData = JSON.parse(body);
                 console.log('Received JSON:', jsonData);
-                await ordersService.ProcessData(jsonData);
+                let result = await ordersService.ProcessData(jsonData);
                 // Respond with a success message
+                // console.log(result);
                 res.writeHead(200, {'Content-Type': 'application/json'});
-                res.end(JSON.stringify({message: 'Data received successfully'}));
+                res.end(JSON.stringify(result));
             } catch (error) {
                 res.writeHead(400, {'Content-Type': 'application/json'});
                 res.end(JSON.stringify({error: `${error}`}));
@@ -39,7 +40,14 @@ async function handleOrdersRequest(req, res, part) {
     else if (req.method === 'PUT') {
     }
     else if (req.method === 'DELETE') {
-
+        try {
+            await ordersService.delData(part);
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify({message: 'Data deleted successfully'}));
+        }catch(error) {
+            res.writeHead(400, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify({error: `${error}`}));
+        }
     }
 }
 

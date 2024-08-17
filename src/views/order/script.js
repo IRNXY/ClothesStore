@@ -125,9 +125,18 @@ function displayData(data){
 }
 
 
+function delItem(arg){
+    let del_id = arg.id.split("_")[2];
+    let user_id = document.cookie.split("=")[1];
+    fetch(`http://localhost:3000/api/v1/orders/${user_id}&${del_id}`, {method:"DELETE"})
+    .then(response => response.json())
+    .then(data => {console.log(data); window.location.reload() })
+    .catch(error => console.error('Error deleting user data:', error));
+}
+
 
 // about cookies: start
-function getId(){
+function creatId(){
     let strings = window.crypto.getRandomValues(new BigUint64Array(2));
     let id = strings[0].toString(36) + strings[1].toString(36).toUpperCase();
     return id;
@@ -136,7 +145,7 @@ function getId(){
 function setUserCookies() {
     if (!(document.cookie)){
         let name = "user_id"
-        let value = getId()
+        let value = creatId()
         document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
     }
 }
