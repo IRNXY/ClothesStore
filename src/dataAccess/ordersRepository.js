@@ -15,7 +15,7 @@ async function saveInBag(user_id, product_id)  {
 }
 
 async function getUserOrders(user_id)  {
-    let query = 'SELECT * FROM orders WHERE id_user = ?';
+    let query = 'SELECT b.id, b.product_name, b.short_description, b.color, b.price, b.img_path FROM orders o, bags b WHERE o.id_user = ? AND o.id_product = b.id';
     return new Promise((resolve, reject) => {
         pool.query(query, [user_id], (err, results) => {
             if (err) {

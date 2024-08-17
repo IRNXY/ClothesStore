@@ -195,5 +195,17 @@ function getProductId(){
     }
 }
 
+function getId(){
+    let strings = window.crypto.getRandomValues(new BigUint64Array(2));
+    let id = strings[0].toString(36) + strings[1].toString(36).toUpperCase();
+    return id;
+}
 
+function setUserCookies() {
+    if (!(document.cookie)){
+        let name = "user_id"
+        let value = getId()
+        document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+    }
+}
 
