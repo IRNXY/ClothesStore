@@ -2,6 +2,7 @@ require('dotenv').config({path: '../.env'});
 require('./config/dbConnection')
 const {handleBagsRequest} = require('./controllers/bagsController');
 const {handleOrdersRequest} = require('./controllers/ordersController');
+const {handleEmailsRequest} = require('./controllers/emailsController');
 const http = require('http')
 const fs = require('fs');
 const path = require('path');
@@ -28,6 +29,9 @@ const server = http.createServer(async (req, res) => {
                 break;
             case 'orders':
                 await handleOrdersRequest(req, res, (parts[4]) ? parts[4] : "");
+                break;
+            case 'email':
+                await handleEmailsRequest(req, res);
                 break;
             default:
                 res.writeHead(404, {'Content-Type': 'application/json'});

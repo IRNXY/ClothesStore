@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    font-family: "Garamond", serif;
+    background: #ffffff;
+}
+
+/* all about header start*/
+header {
+    position: fixed;
+    width: 100%;
+    background-color: #ffffff;
+    display: grid;
+    grid-template-columns: 15% repeat(6, 10%) 25%;
+    text-align: center;
+    margin: 0;
+    box-shadow: 0px 8px 8px -11px #000000;
+    z-index: 1;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+p {margin: 0;}
+
+.section_heading {
+    padding: 10px;
+    font-size: 22px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: "Garamond", serif;
+}
+
+.section {
+    grid-column: 1/-1;
+    display: none;
+    text-align: start;
+}
+
+.subsection_columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.subsection_columns p {
+    margin: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+#shopping_cart_block{
+    display: flex;
+    justify-content: end;
+    padding-right: 90px;
+}
+
+#order_num {
+    position: relative;
+    left: -24px;
+    top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #8090f6;
+}
+/* all about header end*/
+
+#container {
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#title {
+    border: none;
+    border-bottom: 1px solid grey;
+}

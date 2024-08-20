@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="http://localhost:3000/checkout/styles.css" type="text/css">
+    <script src="http://localhost:3000/checkout/script.js" defer></script>
+</head>
+<body>
+
+<header>
+    <div class="section_heading" id="shop_title" >
+        <a href="/">Shop name</a>
+    </div>
+    <div class="section_heading" id="brandName_title" >
+
+    </div>
+    <div class="section_heading" id="news_title" >
+
+    </div>
+    <div class="section_heading" id="bags_title" >
+
+    </div>
+    <div class="section_heading" id="women_title" >
+
+    </div>
+    <div class="section_heading" id="men_title" >
+
+    </div>
+    <div class="section_heading" id="sales_title" >
+
+    </div>
+    <a class="section_heading" id="shopping_cart_block" href="/order" >
+
+    </a>
+
+
+</header>
+
+
+<main>
+
+    <div id="container">
+        <h2>Delivery Details</h2>
+        <form id="form_order">
+            <div>
+                <select id="title" name="title" required>
+                    <option>Mr</option>
+                    <option>Mrs</option>
+                    <option>Miss</option>
+                </select>
+                <input type="text" placeholder="First Name" name="first_name" pattern="^[a-zA-Z]{1,}$" required>
+                <input type="text" placeholder="Last Name" name="last_name" pattern="^[a-zA-Z]{1,}$" required>
+            </div>
+            <div>
+                <input type="email" placeholder="Email Address" name="email" required>
+                <label>Code</label>
+                <input type="text" value="+971" name="code" disabled >
+                <input type="tel" placeholder="Phone Number" pattern="^[0-9]{9}$" name="telephone" required>
+            </div>
+            <div>
+                <input type="text" placeholder="City" pattern="[a-zA-Z\s]{1,}" name="city" required>
+                <input type="text" placeholder="Area" pattern="[a-zA-Z\s]{1,}" name="area" required>
+                <input type="text" placeholder="Address" pattern="^[0-9a-zA-Z\s\.\,\/]{1,}$" name="address" required >
+            </div>
+            <button type="submit">Confirm Order</button>
+        </form>
+    </div>
+
+</main>
+
+<footer>
+
+</footer>
+
+</body>
+</html>

@@ -3,8 +3,6 @@ var all_bag_info = []
 var block_num = 0;
 var color_now = ""
 
-styleEdit()
-
 
 // about header: start
 getNumOfOrders()
@@ -185,7 +183,6 @@ function placeInBag(){
 }
 
 function processResult(data){
-    console.log(data)
     if (data.status && data.status === "fail"){
         document.getElementById("error").style.opacity = "1";
         setTimeout(()=>{document.getElementById("error").style.opacity = "0"; }, 3000)
