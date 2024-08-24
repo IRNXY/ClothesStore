@@ -1,10 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Checkout</title>
+    <link rel="stylesheet" href="http://localhost:3000/creat_product/styles.css" type="text/css">
+    <script src="http://localhost:3000/creat_product/script.js" defer></script>
 </head>
 <body>
+
+<header>
+    <div class="section_heading" id="shop_title" >
+        <a href="/">Shop name</a>
+    </div>
+    <div class="section_heading" id="brandName_title" >
+
+    </div>
+    <div class="section_heading" id="news_title" >
+
+    </div>
+    <div class="section_heading" id="bags_title" >
+
+    </div>
+    <div class="section_heading" id="women_title" >
+
+    </div>
+    <div class="section_heading" id="men_title" >
+
+    </div>
+    <div class="section_heading" id="sales_title" >
+
+    </div>
+    <a class="section_heading" id="shopping_cart_block" href="/order" >
+
+    </a>
+
+
+</header>
+
+
+<main>
+
+    <div id="container">
+        <h2>Creat Item</h2>
+        <form id="form_creat">
+            <div>
+                <input type="text" value="a" placeholder="Product Name" name="product_name" pattern="^[0-9a-zA-Z\s]{1,50}$" required>
+                <input type="text" value="a" placeholder="Short description" name="short_description" pattern="^[0-9a-zA-Z\s]{1,100}$" required>
+            </div>
+            <input type="text" value="a" placeholder="Description" name="description"  required>
+            <div>
+                <select name="category" required>
+                    <option>Mini Bags</option>
+                    <option>Shoulder Bags</option>
+                    <option>Baskets & Tote Bags</option>
+                    <option>Cross-body Bags</option>
+                </select>
+                <select name="fabric" required>
+                    <option>Cotton</option>
+                    <option>Crepe</option>
+                    <option>Leather</option>
+                    <option>satin</option>
+                    <option>Suede</option>
+                </select>
+                <input type="text" value="10" placeholder="Price" pattern="[0-9]{1,}" name="price" required>
+            </div>
+            <button onclick="addColor()">Add Color</button>
+            <section id="color_section">
+
+            </section>
+            <button type="submit" >Confirm</button>
+        </form>
+    </div>
+
+</main>
+
+<footer>
+
+</footer>
 
 </body>
 </html>
