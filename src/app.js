@@ -5,6 +5,7 @@ const {handleOrdersRequest} = require('./controllers/ordersController');
 const {handleEmailsRequest} = require('./controllers/emailsController');
 const {handleFabricRequest} = require('./controllers/fabricController');
 const {handleCategoryRequest} = require('./controllers/categoryController');
+const {handleColorRequest} = require('./controllers/colorController');
 const http = require('http')
 const fs = require('fs');
 const path = require('path');
@@ -40,6 +41,9 @@ const server = http.createServer(async (req, res) => {
                 break;
             case 'fabric':
                 await handleFabricRequest(req, res);
+                break;
+            case 'color':
+                await handleColorRequest(req, res);
                 break;
             default:
                 res.writeHead(404, {'Content-Type': 'application/json'});

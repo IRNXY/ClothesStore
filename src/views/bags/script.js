@@ -1,5 +1,5 @@
 var param_obj = {value: [], name: [], id: []}
-var products_data= []
+var products_data = []
 var hidden_height = 9;
 
 
@@ -7,8 +7,11 @@ var hidden_height = 9;
 getNumOfOrders()
 resizeHeader()
 setUserCookies()
+getCategories()
+getFabric()
+getColor()
 
-function delAllSections(){
+function delAllSections() {
     var sections = document.getElementsByClassName('section');
     for (var i = 0; i < sections.length; i++) {
         sections[i].style.display = 'none';
@@ -29,25 +32,25 @@ function delSection(event) {
 }
 
 
-function getNumOfOrders(){
+function getNumOfOrders() {
     let user_id = document.cookie.split('=')[1]
-    fetch(`http://localhost:3000/api/v1/orders/${user_id}`, {method:"GET"})
-    .then(response => response.json())
-    .then(data => {
-        displayAmountOfOrders(data.length)
-    })
-    .catch(error => console.error('Error fetching user data:', error));
+    fetch(`http://localhost:3000/api/v1/orders/${user_id}`, {method: "GET"})
+        .then(response => response.json())
+        .then(data => {
+            displayAmountOfOrders(data.length)
+        })
+        .catch(error => console.error('Error fetching user data:', error));
 }
 
 
-function displayAmountOfOrders(arg){
-    document.getElementById("order_num").innerHTML = (arg === 0) ? "": arg;
+function displayAmountOfOrders(arg) {
+    document.getElementById("order_num").innerHTML = (arg === 0) ? "" : arg;
     if (arg < 10) {
         document.getElementById("order_num").style.left = "-21px"
     }
 }
 
-function resizeHeader(){
+function resizeHeader() {
     var header_height = document.getElementById('bags_title').offsetHeight;
     document.getElementsByTagName('main')[0].style.paddingTop = header_height + 'px';
 }
@@ -57,7 +60,6 @@ window.addEventListener('resize', () => {
 });
 
 // about header: end
-
 
 
 fetch(`http://localhost:3000/api/v1/bags/all`, {
@@ -73,8 +75,8 @@ fetch(`http://localhost:3000/api/v1/bags/all`, {
 function displayBagsData(data) {
     var uniq_list = new Array();
     document.getElementById("products").innerHTML = "";
-    for(let i= 0; i<data.length; i++){
-        if ( uniq_list.indexOf(data[i].product_name) == -1){
+    for (let i = 0; i < data.length; i++) {
+        if (uniq_list.indexOf(data[i].product_name) == -1) {
             var link_to_page = "http://localhost:3000/product_page?name=" + data[i].product_name;
             var prod_name = data[i].product_name;
             var prod_price = data[i].price;
@@ -91,11 +93,11 @@ function displayBagsData(data) {
 
 function displayCategoriesInf(data) {
     document.getElementById("categories").innerHTML = "";
-    for(let i= 0; i<data.value.length; i++){
+    for (let i = 0; i < data.value.length; i++) {
         var prod_value = data.value[i];
         var prod_innerText = data.value[i];
         var prod_name = data.name[i];
-        if (prod_name === "price"){
+        if (prod_name === "price") {
             prod_innerText += " AED";
         }
         var exapmle_cat_block = `<button name="${prod_name}" value="${prod_value}" onclick="getParameter(this)" class="category_block">` +
@@ -106,11 +108,11 @@ function displayCategoriesInf(data) {
     // document.getElementById("price1").checked = false;
 }
 
-function removeAllParameters(){
+function removeAllParameters() {
     var menu_blocks = document.getElementsByClassName("menu");
-        for (var i = 0; i < menu_blocks.length; i++) {
-            menu_blocks[i].style.height = hidden_height + 'px';
-        }
+    for (var i = 0; i < menu_blocks.length; i++) {
+        menu_blocks[i].style.height = hidden_height + 'px';
+    }
 }
 
 
@@ -119,7 +121,7 @@ function displayParameters(arg) {
         removeAllParameters();
 
         document.getElementById(arg).style.height = document.getElementById(arg).offsetHeight + document.getElementById(arg + '_parameters').offsetHeight + "px";
-    }else{
+    } else {
         removeAllParameters()
     }
 }
@@ -131,28 +133,28 @@ function formConditionData(cond) {
         for (var j = 0; j < cond.name.length; j++) {
             if (cond.name[j] === "color" && cond.value[j] === products_data[i].color) {
                 flag += 1;
-            }else if (cond.name[j] === "category" && cond.value[j] === products_data[i].category) {
+            } else if (cond.name[j] === "category" && cond.value[j] === products_data[i].category) {
                 flag += 1;
-            }else if (cond.name[j] === "price" && cond.value[j].split("-")[0] <= products_data[i].price && cond.value[j].split("-")[1] > products_data[i].price){
+            } else if (cond.name[j] === "price" && cond.value[j].split("-")[0] <= products_data[i].price && cond.value[j].split("-")[1] > products_data[i].price) {
                 flag += 1;
-            }else if (cond.name[j] === "fabric" && cond.value[j] === products_data[i].fabric){
+            } else if (cond.name[j] === "fabric" && cond.value[j] === products_data[i].fabric) {
                 flag += 1;
             }
         }
-        if (flag ===  cond.name.length){
+        if (flag === cond.name.length) {
             result_obj.push(products_data[i]);
         }
     }
     displayBagsData(result_obj);
 }
 
-function changePicture(arg){
+function changePicture(arg) {
     // работает столько с png
     var need = arg.src
     arg.src = need.slice(0, need.length - 4) + "_3.png"
 }
 
-function changePictureBack(arg){
+function changePictureBack(arg) {
     // работает столько с png
     var need = arg.src
     arg.src = need.slice(0, need.length - 6) + ".png"
@@ -175,14 +177,68 @@ function getParameter(arg) {
     displayCategoriesInf(param_obj)
 }
 
-function creatId(){
+function displayFilterData(section, arg, data){
+    for (var i = 0; i < data.length; i++) {
+        let input = document.createElement("input");
+        input.type = "checkbox";
+        input.id = section + i;
+        input.name = section;
+        input.value = data[i][arg];
+        input.setAttribute("onchange", "getParameter(this)")
+        document.getElementById(section + "_box").appendChild(input);
+
+        let label = document.createElement("label");
+        label.innerText = data[i][arg];
+        label.htmlFor = section + i;
+        document.getElementById(section + "_box").appendChild(label);
+
+        document.getElementById(section + "_box").innerHTML += "</br>"
+    }
+}
+
+function getCategories() {
+    fetch('http://localhost:3000/api/v1/category', {
+        method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayFilterData("category", "name", data)
+    })
+    .catch(error => console.error('Error fetching get filter data:', error));
+}
+
+function getFabric(){
+    fetch('http://localhost:3000/api/v1/fabric', {
+        method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayFilterData("fabric", "name", data)
+    })
+    .catch(error => console.error('Error fetching get filter data:', error));
+}
+
+function getColor(){
+    fetch('http://localhost:3000/api/v1/color', {
+        method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayFilterData("color", "color", data)
+    })
+    .catch(error => console.error('Error fetching get filter data:', error));
+}
+
+
+
+function creatId() {
     let strings = window.crypto.getRandomValues(new BigUint64Array(2));
     let id = strings[0].toString(36) + strings[1].toString(36).toUpperCase();
     return id;
 }
 
 function setUserCookies() {
-    if (!(document.cookie)){
+    if (!(document.cookie)) {
         let name = "user_id"
         let value = creatId()
         document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
