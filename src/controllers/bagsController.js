@@ -28,11 +28,10 @@ async function handleBagsRequest(req, res, arg) {
 
         try {
             let [fields, files] = await form.parse(req)
-
-            await bagsService.processBagData(fields, files);
+            let result = await bagsService.processBagData(fields, files);
 
             res.writeHead(200, {'Content-Type': 'application/json'});
-            res.end(JSON.stringify({message: "Product created successfully."}));
+            res.end(JSON.stringify(result));
         }catch(error) {
             res.writeHead(400, {'Content-Type': 'application/json'});
             res.end(JSON.stringify({error: `${error}`}));

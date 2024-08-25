@@ -3,6 +3,8 @@ require('./config/dbConnection')
 const {handleBagsRequest} = require('./controllers/bagsController');
 const {handleOrdersRequest} = require('./controllers/ordersController');
 const {handleEmailsRequest} = require('./controllers/emailsController');
+const {handleFabricRequest} = require('./controllers/fabricController');
+const {handleCategoryRequest} = require('./controllers/categoryController');
 const http = require('http')
 const fs = require('fs');
 const path = require('path');
@@ -32,6 +34,12 @@ const server = http.createServer(async (req, res) => {
                 break;
             case 'email':
                 await handleEmailsRequest(req, res);
+                break;
+            case 'category':
+                await handleCategoryRequest(req, res);
+                break;
+            case 'fabric':
+                await handleFabricRequest(req, res);
                 break;
             default:
                 res.writeHead(404, {'Content-Type': 'application/json'});

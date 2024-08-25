@@ -42,34 +42,53 @@
 
     <div id="container">
         <h2>Creat Item</h2>
-        <form id="form_creat">
-            <div>
-                <input type="text" value="a" placeholder="Product Name" name="product_name" pattern="^[0-9a-zA-Z\s]{1,50}$" required>
-                <input type="text" value="a" placeholder="Short description" name="short_description" pattern="^[0-9a-zA-Z\s]{1,100}$" required>
+        <form id="form_creat_prod" class="forms">
+            <div class="info_blocks">
+                <label>Product Name:</label>
+                <input type="text" placeholder="Product Name" name="product_name" pattern="^[0-9a-zA-Z\s]{1,50}$" required>
+                <label>Short description:</label>
+                <input type="text" placeholder="Short description" name="short_description" pattern="^[0-9a-zA-Z\s]{1,100}$" required>
             </div>
-            <input type="text" value="a" placeholder="Description" name="description"  required>
-            <div>
-                <select name="category" required>
-                    <option>Mini Bags</option>
-                    <option>Shoulder Bags</option>
-                    <option>Baskets & Tote Bags</option>
-                    <option>Cross-body Bags</option>
-                </select>
-                <select name="fabric" required>
-                    <option>Cotton</option>
-                    <option>Crepe</option>
-                    <option>Leather</option>
-                    <option>satin</option>
-                    <option>Suede</option>
-                </select>
-                <input type="text" value="10" placeholder="Price" pattern="[0-9]{1,}" name="price" required>
+            <div class="info_blocks">
+                <label>Description</label>
+                <textarea placeholder="Description" name="description"  required></textarea>
             </div>
-            <button onclick="addColor()">Add Color</button>
+            <div class="info_blocks">
+                <lable>Category</lable>
+                <select name="category" id="categories" required>
+
+                </select>
+                <label>Fabric</label>
+                <select name="fabric" id="fabric" required>
+
+                </select>
+                <label>Price</label>
+                <input type="text"  placeholder="Price" pattern="[0-9]{1,}" name="price" required>
+            </div>
+            <button onclick="addColor()" id="btn_add_section">Add Color</button>
             <section id="color_section">
 
             </section>
-            <button type="submit" >Confirm</button>
+            <button type="submit" id="btn_submit">Confirm</button>
         </form>
+
+        <form id="add_category" class="forms" >
+            <h2>Add Category</h2>
+            <label class="label">Category Name: </label>
+            <input type="text" name="category" pattern="^[a-zA-Z]{1,}$" required>
+            <button type="submit"> Creat </button>
+        </form>
+
+        <form id="add_fabric" class="forms">
+            <h2>Add Fabric</h2>
+            <label class="label">Fabric Name: </label>
+            <input type="text" name="fabric" pattern="^[a-zA-Z]{1,}$" required>
+            <button type="submit"> Creat </button>
+        </form>
+        <br>
+        <label class="label">Password</label>
+        <input type="password" id="password" name="password">
+        <p id="error_password">Please enter the password</p>
     </div>
 
 </main>

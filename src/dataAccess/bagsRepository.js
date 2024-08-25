@@ -68,6 +68,16 @@ async function downloadPicture(files, picture_name, index) {
     })
 }
 
+async function deleteRawImages(files) {
+    for (key in files){
+        try {
+            fs.unlinkSync(files[key][0].filepath)
+        }catch(error){
+            console.log(error);
+        }
+    }
+}
+
 async function getLastId() {
     let query = "SELECT id FROM bags ORDER BY id DESC LIMIT 1"
     return new Promise((resolve, reject) => {
@@ -86,5 +96,6 @@ module.exports = {
     getBagByName,
     getLastId,
     creatBag,
-    downloadPicture
+    downloadPicture,
+    deleteRawImages
 };

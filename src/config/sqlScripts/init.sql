@@ -34,3 +34,28 @@ create table orders (
 	id_user varchar(50) not null,
     id_product int(5) not null
 );
+
+create table category (
+	id varchar(50) primary key,
+    name varchar(50) not null
+);
+
+insert into category values
+	(1, "Cross-body Bags"),
+	(2, "Mini Bags"),
+	(3, "Baskets & Tote Bags"),
+	(4, "Shoulder Bags")
+;
+
+create table fabric (
+	id varchar(50) primary key,
+    name varchar(50) not null
+);
+
+insert into fabric values
+	(1, "Leather"),
+	(2, "Cotton"),
+	(3, "Crepe"),
+	(4, "Satin"),
+	(5, "Suede")
+;

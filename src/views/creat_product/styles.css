@@ -78,3 +78,39 @@ p {margin: 0;}
     width: 10px;
     height: 10px;
 }
+
+.info_blocks {
+    margin: 20px;
+    font-family: "Gill Sans", sans-serif;
+    font-size: 18px;
+}
+
+#btn_add_section {
+    margin: 20px;
+}
+
+#btn_submit {
+    margin: 20px;
+}
+
+.item_block {
+    margin: 20px;
+}
+
+.label {
+    font-family: "Gill Sans", sans-serif;
+    font-size: 18px;
+    margin: 10px;
+}
+
+.forms {
+    padding: 10px;
+    border-bottom: 1px solid grey;
+}
+
+#error_password {
+    display: none;
+    color: red;
+    font-size: 16px;
+    margin: 10px;
+}
